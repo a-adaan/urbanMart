@@ -1,3 +1,13 @@
 {
-  "details": "বিস্তারিত"
+  "details": "বিস্তারিত",
+  "home": "Home",
+  "shop": "দোকান",
+  "aboutUs": "আমাদের সম্পর্কে",
+  "contactUs": "যোগাযোগ করুন",
+  "search": "অনুসন্ধান",
+  "newArrival": "নতুন আগমন",
+  "topTranding": "টপ ট্রেন্ডিং",
+  "addToCart": "কার্টে যোগ করুন",
+  "wishlist": "ইচ্ছা তালিকা",
+  "cart": "কার্ট"
 }

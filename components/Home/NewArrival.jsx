@@ -4,15 +4,17 @@ import Link from "next/link";
 import AddtoCart from "../lib/AddtoCart";
 import { HiMagnifyingGlassCircle } from "react-icons/hi2";
 import { FaStar, FaStarHalf } from "react-icons/fa";
+import { getDictionary } from "@/dictionary/getDict";
 
 export default async function NewArrival() {
   const newProducts = await getNewProduct();
   // console.log(newProducts);
+  const dict = await getDictionary();
 
   return (
     <div className="container pb-16">
       <h2 className="text-2xl font-medium text-gray-800 uppercase mb-6">
-        top new arrival
+        {dict?.newArrival}
       </h2>
       <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
         {newProducts.map((product) => (
@@ -71,7 +73,7 @@ export default async function NewArrival() {
                 </div>
               </div>
             </div>
-            <AddtoCart cart={true} card={true} />
+            <AddtoCart cart={true} card={true} dict={dict} />
           </div>
         ))}
       </div>

@@ -1,7 +1,7 @@
 import { FaCartPlus } from "react-icons/fa";
 import { TbJewishStarFilled } from "react-icons/tb";
 
-export default function AddtoCart({ cart, wishlist, card }) {
+export default function AddtoCart({ cart, wishlist, card, dict }) {
   return (
     <div className="mt-6 flex gap-3 border-b border-gray-200 pb-5 pt-5">
       {cart && (
@@ -10,12 +10,12 @@ export default function AddtoCart({ cart, wishlist, card }) {
             card && "w-full"
           }`}
         >
-          <FaCartPlus size={25} /> Add to cart
+          <FaCartPlus size={25} /> {dict?.addToCart}
         </button>
       )}
       {wishlist && (
         <button className="border border-gray-300 text-gray-400 px-8 py-2 font-medium rounded uppercase flex items-center justify-center gap-2 hover:text-primary transition">
-          <TbJewishStarFilled size={25} /> Wishlist
+          <TbJewishStarFilled size={25} /> {dict?.wishlist}
         </button>
       )}
     </div>

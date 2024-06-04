@@ -2,10 +2,11 @@ import { auth } from "@/auth";
 import Image from "next/image";
 import Link from "next/link";
 import Logout from "./auth/Logout";
+import { getDictionary } from "@/dictionary/getDict";
 
 export default async function Navbar() {
   const session = await auth();
-  console.log(session);
+  const dict = await getDictionary();
   return (
     <nav className="bg-gray-800">
       <div className="container flex px-5">
@@ -103,25 +104,25 @@ export default async function Navbar() {
               href="/"
               className="text-gray-200 hover:text-white transition"
             >
-              Home
+              {dict?.home}
             </Link>
             <Link
               href="pages/shop.html"
               className="text-gray-200 hover:text-white transition"
             >
-              Shop
+              {dict?.shop}
             </Link>
             <Link
               href="#"
               className="text-gray-200 hover:text-white transition"
             >
-              About us
+              {dict?.aboutUs}
             </Link>
             <Link
               href="#"
               className="text-gray-200 hover:text-white transition"
             >
-              Contact us
+              {dict?.contactUs}
             </Link>
           </div>
           {session ? (

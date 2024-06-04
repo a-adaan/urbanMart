@@ -1,8 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
 import SearchButton from "./shop/SearchButton";
+import { syncIndexes } from "mongoose";
+import { getDictionary } from "@/dictionary/getDict";
 
-export default function Header() {
+export default async function Header() {
+  const dict = await getDictionary();
   return (
     <header className="py-4 shadow-sm bg-white">
       <div className="container flex items-center justify-between px-5">
@@ -16,7 +19,7 @@ export default function Header() {
           />
         </Link>
 
-        <SearchButton />
+        <SearchButton dict={dict} />
 
         <div className="flex items-center space-x-4">
           <Link
@@ -26,7 +29,7 @@ export default function Header() {
             <div className="text-2xl">
               <i className="fa-regular fa-heart"></i>
             </div>
-            <div className="text-xs leading-3">Wishlist</div>
+            <div className="text-xs leading-3">{dict?.wishlist}</div>
             <div className="absolute left-0 -top-5 w-5 h-5 rounded-full flex items-center justify-center bg-primary text-white text-xs">
               8
             </div>
@@ -38,7 +41,7 @@ export default function Header() {
             <div className="text-2xl">
               <i className="fa-solid fa-bag-shopping"></i>
             </div>
-            <div className="text-xs leading-3">Cart</div>
+            <div className="text-xs leading-3">{dict?.cart}</div>
             <div className="absolute left-0 -top-5 w-5 h-5 rounded-full flex items-center justify-center bg-primary text-white text-xs">
               2
             </div>

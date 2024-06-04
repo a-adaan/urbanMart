@@ -7,7 +7,7 @@ import { usePathname, useRouter } from "next/navigation";
 import { getSearchSuggestions } from "@/db/query";
 import debounce from "lodash.debounce";
 
-export default function SearchButton() {
+export default function SearchButton({ dict }) {
   const [searchTerm, setSearchTerm] = useState("");
   const [suggestions, setSuggestions] = useState([]);
   const [isFocused, setIsFocused] = useState(false);
@@ -76,7 +76,7 @@ export default function SearchButton() {
         className="bg-primary border border-primary text-white px-8 rounded-r-md hover:bg-transparent hover:text-primary transition"
         onClick={handleSearch}
       >
-        Search
+        {dict.search}
       </button>
       {isFocused && suggestions.length > 0 && (
         <ul className="absolute top-12 left-0 right-0 bg-white border border-gray-200 z-10 rounded-b-md">
