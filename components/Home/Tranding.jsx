@@ -4,16 +4,15 @@ import Link from "next/link";
 import { HiMagnifyingGlassCircle } from "react-icons/hi2";
 import AddtoCart from "../lib/AddtoCart";
 import { FaStar, FaStarHalf } from "react-icons/fa";
-import { getDictionary } from "@/dictionary/getDict";
 
 export default async function Tranding() {
   const trandingProducts = await getTrandingProduct();
   // console.log(trandingProducts);
-  const dict = await getDictionary();
+
   return (
     <div className="container pb-16">
       <h2 className="text-2xl font-medium text-gray-800 uppercase mb-6">
-        {dict?.topTranding}
+        TRENDING PRODUCTS
       </h2>
       <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
         {trandingProducts.map((product) => (
@@ -71,7 +70,7 @@ export default async function Tranding() {
                 </div>
               </div>
             </div>
-            <AddtoCart card={true} cart={true} dict={dict} />
+            <AddtoCart card={true} cart={true} />
           </div>
         ))}
       </div>
