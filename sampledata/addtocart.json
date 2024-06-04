@@ -1,0 +1,12 @@
+[
+  {
+    "userId": { "$oid": "6651fc37c272f6f1adb8db00" },
+    "purchase": [
+      {
+        "productId": { "$oid": "6651f7bcc272f6f1adb8da9d" },
+        "quantity": 3,
+        "mrp": 2400
+      }
+    ]
+  }
+]
