@@ -33,20 +33,9 @@ export async function credentialsLogin(formData) {
       redirect: false,
     });
 
-    // if (response.error) {
-    //   console.log("error index", response.error);
-    //   throw new Error(response.error);
-    // } else {
-    // const expires = new Date(Date.now() + 100000 * 100000);
-    console.log(response.error);
-    // const session = await encrypt({ ...response, expires });
-
-    // cookies().set("session", session, { expires, httpOnly: true });
     return response;
-    // }
-  } catch (error) {
-    // throw new Error(error);
-    console.log("consloe index", error.message);
+  } catch (err) {
+    throw new Error(err.message);
   }
 }
 

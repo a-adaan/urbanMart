@@ -4,6 +4,8 @@ import {
   loginWithFacebook,
   loginWithGoogle,
 } from "@/app/actions";
+import { set } from "mongoose";
+import { signIn } from "next-auth/react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
@@ -19,21 +21,24 @@ export default function Login() {
       const formData = new FormData(event.currentTarget);
       const res = await credentialsLogin(formData);
       if (!!res.error) {
-        setError(res.error);
+        setError("Invalid Email or Password.");
       } else {
         router.push("/");
         router.refresh();
       }
     } catch (error) {
-      console.log(error.message);
+      setError("Invalid Email or Password.");
     }
   }
   return (
     <div className="contain py-16">
       <div className="max-w-lg mx-auto shadow px-6 py-7 rounded overflow-hidden">
         <h2 className="text-2xl uppercase font-medium mb-1">Login</h2>
-        <p className="text-gray-600 mb-6 text-sm">welcome back customer</p>
-        {error ?? <p className="text-red-600 mb-6 text-sm">{error}</p>}
+        <p className="text-gray-600 mb-6 text-sm">
+          welcome back customer{" "}
+          {error && <span className="text-red-500  text-sm">({error})</span>}
+        </p>
+
         <form
           action="#"
           method="post"
