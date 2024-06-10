@@ -10,9 +10,11 @@ import bcrypt from "bcryptjs";
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
   adapter: MongoDBAdapter(mongoClientPromise, { databaseName: "lwskart" }),
+
   session: {
     strategy: "jwt",
   },
+
   providers: [
     CredentialsProvider({
       credentials: {
@@ -54,4 +56,23 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       clientSecret: process.env.AUTH_FACEBOOK_SECRET,
     }),
   ],
+  callbacks: {
+    async session({ session, token }) {
+      try {
+        const user = await usermodel.findOne({ email: token.email });
+        if (user) {
+          (session.user.name = user?.fullName || user?.name),
+            (session.user.email = user?.email),
+            (session.user.id = user?._id.toString());
+          session.user.image = user?.image || "";
+          return session;
+        } else {
+          return null;
+        }
+      } catch (err) {
+        console.log(err);
+        return null;
+      }
+    },
+  },
 });

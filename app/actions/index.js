@@ -35,7 +35,7 @@ export async function credentialsLogin(formData) {
 
     return response;
   } catch (err) {
-    throw new Error(err.message);
+    return null;
   }
 }
 

@@ -3,8 +3,7 @@
 import { useSession } from "next-auth/react";
 
 export default function Profile() {
-  // const { data: session } = useSession();
-  // console.log(session);
+  const session = useSession();
   return (
     <div className="container  items-start gap-6 pt-4 pb-16">
       <div className=" grid grid-cols-3 gap-4 mx-auto max-w-5xl">
@@ -16,8 +15,10 @@ export default function Profile() {
             <button className="text-primary">Edit</button>
           </div>
           <div className="space-y-1">
-            <h4 className="text-gray-700 font-medium">John Doe</h4>
-            <p className="text-gray-800">example@mail.com</p>
+            <h4 className="text-gray-700 font-medium">
+              {session.data.user.name}
+            </h4>
+            <p className="text-gray-800">{session.data.user.email}</p>
             <p className="text-gray-800">0811 8877 988</p>
           </div>
         </div>

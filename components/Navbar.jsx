@@ -5,7 +5,6 @@ import Logout from "./auth/Logout";
 
 export default async function Navbar() {
   const session = await auth();
-  // console.log(session);
   return (
     <nav className="bg-gray-800">
       <div className="container flex px-5">

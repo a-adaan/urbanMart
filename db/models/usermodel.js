@@ -30,6 +30,14 @@ const userSchema = new Schema({
     type: String,
     required: true,
   },
+  image: {
+    type: String,
+    required: false,
+  },
+  name: {
+    type: String,
+    required: false,
+  },
 });
 
 const usermodel = mongoose.models.users || mongoose.model("users", userSchema);

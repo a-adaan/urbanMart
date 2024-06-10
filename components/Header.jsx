@@ -1,8 +1,13 @@
 import Image from "next/image";
 import Link from "next/link";
 import SearchButton from "./shop/SearchButton";
+import { auth } from "@/auth";
+import { FaUserAlt } from "react-icons/fa";
+import ShowAnW from "./lib/ShowAnW";
 
 export default async function Header() {
+  const session = await auth();
+
   return (
     <header className="py-4 shadow-sm bg-white">
       <div className="container flex items-center justify-between px-5">
@@ -19,38 +24,16 @@ export default async function Header() {
         <SearchButton />
 
         <div className="flex items-center space-x-4">
+          <ShowAnW />
           <Link
-            href="#"
-            className="text-center text-gray-700 hover:text-primary transition relative"
+            href="/account"
+            className="flex flex-col items-center text-gray-700 hover:text-primary transition relative"
           >
-            <div className="text-2xl">
-              <i className="fa-regular fa-heart"></i>
+            <FaUserAlt size={25} />
+
+            <div className=" text-xs leading-3">
+              {session ? session.user.name : "Account"}
             </div>
-            <div className="text-xs leading-3">Wishlist</div>
-            <div className="absolute left-0 -top-5 w-5 h-5 rounded-full flex items-center justify-center bg-primary text-white text-xs">
-              8
-            </div>
-          </Link>
-          <Link
-            href="#"
-            className="text-center text-gray-700 hover:text-primary transition relative"
-          >
-            <div className="text-2xl">
-              <i className="fa-solid fa-bag-shopping"></i>
-            </div>
-            <div className="text-xs leading-3">Cart</div>
-            <div className="absolute left-0 -top-5 w-5 h-5 rounded-full flex items-center justify-center bg-primary text-white text-xs">
-              2
-            </div>
-          </Link>
-          <Link
-            href="#"
-            className="text-center text-gray-700 hover:text-primary transition relative"
-          >
-            <div className="text-2xl">
-              <i className="fa-regular fa-user"></i>
-            </div>
-            <div className="text-xs leading-3">Account</div>
           </Link>
         </div>
       </div>

@@ -1,7 +1,12 @@
+"use client";
+
+import { useSession } from "next-auth/react";
 import { FaCartPlus } from "react-icons/fa";
 import { TbJewishStarFilled } from "react-icons/tb";
 
 export default function AddtoCart({ cart, wishlist, card }) {
+  const session = useSession();
+  // console.log(session);
   return (
     <div className="mt-6 flex gap-3 border-b border-gray-200 pb-5 pt-5">
       {cart && (

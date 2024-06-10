@@ -1,6 +1,7 @@
 "use client";
 
 import { loginWithFacebook, loginWithGoogle } from "@/app/actions";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
@@ -186,9 +187,9 @@ export default function Register() {
 
         <p className="mt-4 text-center text-gray-600">
           Already have account?{" "}
-          <a href="login.html" className="text-primary">
+          <Link href="/login" className="text-primary">
             Login now
-          </a>
+          </Link>
         </p>
       </div>
     </div>
