@@ -10,17 +10,17 @@ export default async function Category() {
         shop by category
       </h2>
       <div className="grid grid-cols-3 gap-3">
-        {cat.map((ct, index) => (
+        {cat.map((ct) => (
           <div key={ct} className="relative rounded-sm overflow-hidden group">
             <Image
-              src={`/category/category-${index + 1}.jpg`}
+              src={`/category/${ct.toLowerCase()}.jpg`}
               alt="category 1"
               className="w-full"
               width={400}
               height={400}
             />
             <Link
-              href="#"
+              href={`/category/${ct}`}
               className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center text-xl text-white font-roboto font-medium group-hover:bg-opacity-60 transition"
             >
               {ct}

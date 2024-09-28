@@ -1,11 +1,13 @@
-import Image from "next/image";
-import FilterItem from "./FilterItem";
-import Link from "next/link";
-import AddtoCart from "../lib/AddtoCart";
+import { getProductByCategory } from "@/db/query";
 import { HiMagnifyingGlassCircle } from "react-icons/hi2";
 import { FaStar, FaStarHalf } from "react-icons/fa";
+import Image from "next/image";
+import Link from "next/link";
+import AddtoCart from "@/components/lib/AddtoCart";
 
-export default function SearchProduct({ products }) {
+export default async function CategoryPage({ params: { cateName } }) {
+  const products = await getProductByCategory(cateName, null);
+
   return (
     <>
       <div className="container py-4 flex items-center gap-3">
@@ -15,10 +17,11 @@ export default function SearchProduct({ products }) {
         <span className="text-sm text-gray-400">
           <i className="fa-solid fa-chevron-right"></i>
         </span>
-        <p className="text-gray-600 font-medium">Shop</p>
+        <p className="text-gray-600 font-semibold">
+          Category Name : {cateName}
+        </p>
       </div>
       <div className="container grid md:grid-cols-4 grid-cols-2 gap-6 pt-4 pb-16 items-start">
-        <FilterItem />
         {/* <!-- products --> */}
         {products ? (
           products.map((product) => (
@@ -36,7 +39,7 @@ export default function SearchProduct({ products }) {
                 />
                 <div
                   className="absolute inset-0 bg-black bg-opacity-40 flex items-center 
-                    justify-center gap-2 opacity-0 group-hover:opacity-100 transition "
+                justify-center gap-2 opacity-0 group-hover:opacity-100 transition "
                 >
                   <Link
                     href={`/${product?.id}`}

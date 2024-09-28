@@ -15,7 +15,7 @@ export default async function Header() {
           <Image
             src="/logo.svg"
             alt="Logo"
-            className="w-32"
+            className="w-40"
             width={40}
             height={40}
           />

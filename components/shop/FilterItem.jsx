@@ -118,7 +118,7 @@ export default function FilterItem() {
               Categories
             </h3>
             <div className="space-y-2">
-              {["Bedroom", "Sofa", "Office", "Outdoor"].map(
+              {["Watch", "Belts", "Caps", "Sunglass", "Shoes", "Wallet"].map(
                 (category, index) => (
                   <div className="flex items-center" key={index}>
                     <input
@@ -214,7 +214,7 @@ export default function FilterItem() {
               Categories
             </h3>
             <div className="space-y-2">
-              {["Bedroom", "Sofa", "Office", "Outdoor"].map(
+              {["Watch", "Belts", "Caps", "Sunglass", "Shoes", "Wallet"].map(
                 (category, index) => (
                   <div className="flex items-center" key={index}>
                     <input

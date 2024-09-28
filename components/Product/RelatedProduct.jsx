@@ -17,13 +17,13 @@ export default async function RelatedProduct({ category, skipId }) {
         {products.map((product) => (
           <div
             key={product?.id}
-            className="bg-white shadow rounded overflow-hidden group"
+            className="bg-white shadow rounded overflow-hidden group flex flex-col justify-between"
           >
             <div className="relative">
               <Image
                 src={`${product?.image[0]}/${product?.id}`}
                 alt={product?.name}
-                className="w-full"
+                className="w-full h-64 object-cover"
                 width={700}
                 height={700}
               />
@@ -41,7 +41,7 @@ export default async function RelatedProduct({ category, skipId }) {
                 <AddtoCart wishlist={true} />
               </div>
             </div>
-            <div className="pt-4 pb-3 px-4">
+            <div className="pt-4 pb-3 px-4 flex-grow">
               <Link href={`/${product?.id}`}>
                 <h4 className="uppercase font-medium text-xl mb-2 text-gray-800 hover:text-primary transition">
                   {product?.name}

@@ -1,6 +1,6 @@
 import ProductDetails from "@/components/Product/ProductDetails";
 import { Suspense } from "react";
-import Loading from "../loading";
+import Loading from "../../loading";
 import { getProductById } from "@/db/query";
 
 export async function generateMetadata({ params }) {

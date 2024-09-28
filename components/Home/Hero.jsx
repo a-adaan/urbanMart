@@ -3,16 +3,17 @@ import Image from "next/image";
 export default function Hero() {
   return (
     <>
-      <div className="bg-cover bg-no-repeat bg-center py-36 bg-[url('/banner-bg.jpg')]">
+      <div className="bg-cover bg-no-repeat bg-center py-36 bg-[url('/hero-banner.jpg')]">
         <div className="container">
           <h1 className="text-6xl text-gray-800 font-medium mb-4 capitalize">
-            best collection for <br /> home decoration
+            One-Stop Shop for Premium <br /> Men&apos;s Accessories
           </h1>
-          <p>
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aperiam{" "}
-            <br />
-            accusantium perspiciatis, sapiente magni eos dolorum ex quos dolores
-            odio
+          <p className="w-1/3">
+            Discover Urban Mart, the ultimate destination for stylish and modern
+            men&apos;s accessories. We offer a curated collection designed to
+            elevate your look. <br />
+            Explore our range of top-quality products that blend functionality
+            with fashion.
           </p>
           <div className="mt-12">
             <a

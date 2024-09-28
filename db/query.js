@@ -65,14 +65,23 @@ export async function getProductById(id) {
 export async function getProductByCategory(name, skipId) {
   await connectToDataBase();
   try {
-    const products = await productModel
-      .find({
-        category: name,
-        _id: { $ne: new mongoose.Types.ObjectId(skipId) },
-      })
-      .limit(4)
-      .lean();
-    return arrayIdConverter(products);
+    if (skipId === null) {
+      const products = await productModel
+        .find({
+          category: name,
+        })
+        .lean();
+      return arrayIdConverter(products);
+    } else {
+      const products = await productModel
+        .find({
+          category: name,
+          _id: { $ne: new mongoose.Types.ObjectId(skipId) },
+        })
+        .limit(4)
+        .lean();
+      return arrayIdConverter(products);
+    }
   } catch (error) {
     throw new Error(error.message);
   }
