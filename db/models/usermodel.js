@@ -16,19 +16,19 @@ const userSchema = new Schema({
   },
   number: {
     type: String,
-    required: true,
+    required: false,
   },
   country: {
     type: String,
-    required: true,
+    required: false,
   },
   city: {
     type: String,
-    required: true,
+    required: false,
   },
   address: {
     type: String,
-    required: true,
+    required: false,
   },
   image: {
     type: String,
@@ -38,6 +38,7 @@ const userSchema = new Schema({
     type: String,
     required: false,
   },
+  googleId: { type: String },
 });
 
 const usermodel = mongoose.models.users || mongoose.model("users", userSchema);

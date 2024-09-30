@@ -28,3 +28,45 @@
     @apply block w-full border border-gray-300 px-4 py-3 text-gray-600 text-sm rounded placeholder-gray-400 focus:border-primary focus:ring-0;
   }
 }
+
+/* CSS Code */
+.loader-div {
+  display: flex;
+  height: 100vh;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+}
+.loader-span {
+  background-color: #575656;
+  height: 50px;
+  width: 50px;
+  border-radius: 100%;
+  animation: load 1500ms infinite;
+}
+.loader-span:nth-child(1) {
+  animation-delay: 0ms;
+}
+
+.loader-span:nth-child(2) {
+  animation-delay: 300ms;
+}
+
+.loader-span:nth-child(3) {
+  animation-delay: 600ms;
+}
+
+@keyframes load {
+  0% {
+    background-color: #575656;
+    scale: 1;
+  }
+  50% {
+    background-color: #827e7e;
+    scale: 0.8;
+  }
+  0% {
+    background-color: #575656;
+    scale: 1;
+  }
+}

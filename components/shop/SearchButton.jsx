@@ -6,11 +6,13 @@ import { usePathname, useRouter } from "next/navigation";
 
 import { getSearchSuggestions } from "@/db/query";
 import debounce from "lodash.debounce";
+import Loading from "@/app/loading";
 
 export default function SearchButton() {
   const [searchTerm, setSearchTerm] = useState("");
   const [suggestions, setSuggestions] = useState([]);
   const [isFocused, setIsFocused] = useState(false);
+  const [loading, setLoading] = useState(false);
   const router = useRouter();
   const pathname = usePathname();
 
@@ -38,6 +40,7 @@ export default function SearchButton() {
 
   const handleSearch = () => {
     if (searchTerm.trim()) {
+      setLoading(true);
       router.push(`/shop/search=${searchTerm}`);
     }
   };
@@ -47,14 +50,31 @@ export default function SearchButton() {
       handleSearch();
     }
   };
-  // console.log(suggestions);
 
   const handleSuggestionClick = (suggestion) => {
+    setLoading(true);
     setSearchTerm(suggestion.name);
     setSuggestions([]);
+    setSearchTerm("");
     router.push(`/shop/search=${suggestion.name}&id=${suggestion.id}`);
   };
+  // useEffect(() => {
+  //   const handleRouteChange = () => {
+  //     setLoading(false); // Set loading to false when the route changes
+  //   };
 
+  //   router.events.on("routeChangeComplete", handleRouteChange);
+  //   router.events.on("routeChangeError", handleRouteChange);
+
+  //   return () => {
+  //     router.events.off("routeChangeComplete", handleRouteChange);
+  //     router.events.off("routeChangeError", handleRouteChange);
+  //   };
+  // }, [router]);
+  useEffect(() => {
+    // Set loading to false whenever the pathname changes
+    setLoading(false);
+  }, [pathname]);
   return (
     <div className="w-full max-w-xl relative flex">
       <span className="absolute left-4 top-3 text-lg text-gray-400">
@@ -78,6 +98,7 @@ export default function SearchButton() {
       >
         Search
       </button>
+      {loading && <Loading />}
       {isFocused && suggestions.length > 0 && (
         <ul className="absolute top-12 left-0 right-0 bg-white border border-gray-200 z-10 rounded-b-md">
           {suggestions.map((suggestion, index) => (

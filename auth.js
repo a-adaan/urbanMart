@@ -57,22 +57,26 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     }),
   ],
   callbacks: {
-    async session({ session, token }) {
-      try {
-        const user = await usermodel.findOne({ email: token.email });
-        if (user) {
-          (session.user.name = user?.fullName || user?.name),
-            (session.user.email = user?.email),
-            (session.user.id = user?._id.toString());
-          session.user.image = user?.image || "";
-          return session;
-        } else {
-          return null;
-        }
-      } catch (err) {
-        console.log(err);
-        return null;
+    jwt({ token, user }) {
+      if (user) {
+        const id = user?._id?.toString() || user?.id;
+        token.name = user.fullName || token.name;
+        token.sub = id;
+        token.img = user?.image || "";
+        token.email = user.email;
       }
+
+      return token;
+    },
+    session({ token, session }) {
+      session.user = {
+        id: token.sub,
+        name: token.name || session.user.name,
+        img: token.img || token.picture || "",
+        email: token.email,
+      };
+
+      return session;
     },
   },
 });

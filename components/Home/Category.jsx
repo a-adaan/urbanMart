@@ -1,6 +1,6 @@
 import { getAllCategory } from "@/db/query";
 import Image from "next/image";
-import Link from "next/link";
+import CategoryBtns from "../lib/CategoryBtns";
 
 export default async function Category() {
   const cat = await getAllCategory();
@@ -19,12 +19,7 @@ export default async function Category() {
               width={400}
               height={400}
             />
-            <Link
-              href={`/category/${ct}`}
-              className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center text-xl text-white font-roboto font-medium group-hover:bg-opacity-60 transition"
-            >
-              {ct}
-            </Link>
+            <CategoryBtns category={ct} nav={false} />
           </div>
         ))}
       </div>
