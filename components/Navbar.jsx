@@ -37,13 +37,13 @@ export default async function Navbar() {
               Home
             </Link>
             <Link
-              href="/shop"
+              href="/"
               className="text-gray-200 hover:text-white transition"
             >
               Shop
             </Link>
             <Link
-              href="#"
+              href="/"
               className="text-gray-200 hover:text-white transition"
             >
               About us

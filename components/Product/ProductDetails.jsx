@@ -2,9 +2,8 @@ import Image from "next/image";
 import RelatedProduct from "./RelatedProduct";
 import { getProductById } from "@/db/query";
 import { FaStar, FaStarHalf } from "react-icons/fa";
-import ProductCounter from "../lib/ProductCounter";
 import SocialShare from "../lib/SocialShare";
-import AddtoCart from "../lib/AddtoCart";
+import CounterNCart from "../lib/CounterNCart";
 
 export default async function ProductDetails({ id }) {
   const product = await getProductById(id);
@@ -94,8 +93,7 @@ export default async function ProductDetails({ id }) {
           <p className="mt-4 text-gray-600">{product?.description}</p>
 
           {/* Product Counter & Add to Cart */}
-          <ProductCounter />
-          <AddtoCart cart={true} wishlist={true} />
+          <CounterNCart productId={product?.id} stock={product?.stock} />
 
           {/* Social Share */}
           <SocialShare url={id} />

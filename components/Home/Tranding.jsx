@@ -31,7 +31,7 @@ export default async function Tranding() {
                 className="absolute inset-0 bg-black bg-opacity-40 flex items-center 
                     justify-center gap-2 opacity-0 group-hover:opacity-100 transition "
               >
-                <AddtoCart wishlist={true} />
+                <AddtoCart wishlist={true} productId={product?.id} />
               </div>
             </div>
             <div className="pt-4 pb-3 px-4 flex-grow">
@@ -58,7 +58,7 @@ export default async function Tranding() {
                 </div>
               </div>
             </div>
-            <AddtoCart card={true} cart={true} />
+            <AddtoCart card={true} cart={true} productId={product?.id} />
           </div>
         ))}
       </div>

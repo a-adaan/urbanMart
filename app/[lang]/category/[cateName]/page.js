@@ -40,7 +40,7 @@ export default async function CategoryPage({ params: { cateName } }) {
                   className="absolute inset-0 bg-black bg-opacity-40 flex items-center 
                 justify-center gap-2 opacity-0 group-hover:opacity-100 transition "
                 >
-                  <AddtoCart wishlist={true} />
+                  <AddtoCart wishlist={true} productId={product?.id} />
                 </div>
               </div>
               <div className="pt-4 pb-3 px-4 flex-grow">
@@ -67,7 +67,7 @@ export default async function CategoryPage({ params: { cateName } }) {
                   </div>
                 </div>
               </div>
-              <AddtoCart cart={true} card={true} />
+              <AddtoCart cart={true} card={true} productId={product?.id} />
             </div>
           ))
         ) : (
