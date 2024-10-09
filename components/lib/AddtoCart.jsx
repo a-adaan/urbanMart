@@ -3,7 +3,6 @@
 import useCartnQun from "@/utils/CartHook";
 import { FaCartPlus } from "react-icons/fa";
 import { TbJewishStarFilled } from "react-icons/tb";
-import { ToastContainer } from "react-toastify";
 
 export default function AddtoCart({
   cart,
@@ -37,7 +36,6 @@ export default function AddtoCart({
           <TbJewishStarFilled size={25} /> Wishlist
         </button>
       )}
-      <ToastContainer position="top-center" autoClose={2000} />
     </div>
   );
 }

@@ -7,6 +7,7 @@ import Footer from "@/components/Footer";
 import CopyRight from "@/components/CopyRight";
 import { SessionProvider } from "next-auth/react";
 import { auth } from "@/auth";
+import { ToastContainer } from "react-toastify";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -27,6 +28,12 @@ export default async function RootLayout({ children }) {
           <Footer />
           <CopyRight />
         </SessionProvider>
+        <ToastContainer
+          containerId="GlobalApplicationToast"
+          position="top-center"
+          autoClose={1500}
+          limit={1}
+        />
       </body>
     </html>
   );

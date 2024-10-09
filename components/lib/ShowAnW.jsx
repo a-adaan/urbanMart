@@ -16,14 +16,30 @@ export default function ShowAnW() {
 
   // Function to update the cart count from localStorage
   const updateCartCount = () => {
-    const savedCart = JSON.parse(localStorage.getItem("cart")) || [];
-    setCart(savedCart || "");
+    const savedCart = localStorage.getItem("cart");
+    let parsedCart = [];
+
+    try {
+      parsedCart = savedCart ? JSON.parse(savedCart) : [];
+    } catch (error) {
+      console.error("Error parsing cart data from localStorage:", error);
+    }
+
+    setCart(parsedCart || []);
   };
 
   // Function to update the wishlist count from localStorage
   const updateWishlistCount = () => {
-    const savedWishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
-    setWishlistCount(savedWishlist.length || 0);
+    const savedWishlist = localStorage.getItem("wishlist");
+    let parsedWishlist = [];
+
+    try {
+      parsedWishlist = savedWishlist ? JSON.parse(savedWishlist) : [];
+    } catch (error) {
+      console.error("Error parsing wishlist data from localStorage:", error);
+    }
+
+    setWishlistCount(parsedWishlist.length || 0);
   };
 
   useEffect(() => {
